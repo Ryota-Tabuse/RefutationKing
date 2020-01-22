@@ -1,10 +1,10 @@
 # RefutationKing
 自作Webアプリケーションについて
 
-### 目標
+## 目標
 非同期実行を使用し、リアルタイムチャット化する。
 
-### RefutationKing Task
+## RefutationKing Task
 [✔︎]必要機能洗い出し
 
 [✔︎]画面要件整理
