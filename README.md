@@ -9,7 +9,7 @@
 
 [✔︎]画面要件整理
 
-[進行中]DB設計
+[✔︎][DB設計]![./doc/Entity%20Relationship%20Diagram.png](./doc/Entity%20Relationship%20Diagram.png)
 
 []開発タスク分割
 
