@@ -19,7 +19,9 @@
 
   [✔︎]Docker環境構築
 
-  []DB作成
+  [✔︎]DB接続
+
+  []DBテーブル、項目作成
   
   []フェイクデータ作成
   
@@ -65,3 +67,12 @@ envファイルをexmapleからコピーして作成
 2. `composer create-project laravel/laravel . --prefer-dist`
 3. `exit`
 ⇨localhostにアクセス可能になる。
+
+## DB設定
+1. `docker-compose up -d postgres`
+
+## DB接続設定
+1.src配下に生成されている「.env」ファイルを編集
+
+## Docker確認コマンド
+`docker-compose ps`
