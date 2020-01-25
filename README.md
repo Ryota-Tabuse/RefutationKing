@@ -45,3 +45,14 @@
   
   []各種バリデーション確認、修正
 
+# 環境構築(Docker-laradock)
+
+## laradock
+
+1. git submodule add [https://github.com/Laradock/laradock.git](https://github.com/Laradock/laradock.git)
+2. cd laradock
+3. cp env-example .env 
+envファイルをexmapleからコピーして作成
+4. APP_CODE_PATH_HOST=../src
+
+*** envは機密情報のため、Gitにあげないよう注意！ ***
