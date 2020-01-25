@@ -56,3 +56,12 @@ envファイルをexmapleからコピーして作成
 4. APP_CODE_PATH_HOST=../src
 
 *** envは機密情報のため、Gitにあげないよう注意！ ***
+
+## Docker立ち上げ
+1. `docker-compose up -d workspace nginx`
+
+## **Laravelアプリの構築**
+1. `docker-compose exec workspace bash`
+2. `composer create-project laravel/laravel . --prefer-dist`
+3. `exit`
+⇨localhostにアクセス可能になる。
