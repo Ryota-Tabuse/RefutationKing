@@ -17,8 +17,8 @@ class CreateRoomsTable extends Migration
             $table->bigIncrements('id');
             $table->text('name');
             $table->bigInteger('thema_id');
-            $table->bigInteger('option_a_user_id');
-            $table->bigInteger('option_b_user_id');
+            $table->bigInteger('option_a_user_id')->nullable();
+            $table->bigInteger('option_b_user_id')->nullable();
             $table->timestamps();
 
             //外部制約
