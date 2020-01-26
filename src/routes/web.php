@@ -22,3 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //お題画面
 Route::get('/themes', 'ThemaController@index')->name('themes');
+
+//議論部屋一覧画面
+Route::get('themes/{thema_id}/rooms', 'RoomController@index')->name('rooms.index');

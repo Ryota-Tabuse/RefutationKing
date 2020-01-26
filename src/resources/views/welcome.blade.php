@@ -8,6 +8,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <!-- Styles -->
+        <link href="{{asset('css/styles.css')}}" rel="stylesheet">
     </head>
     <body>
         <div class="flex-center position-ref full-height">

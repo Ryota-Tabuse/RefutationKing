@@ -8,6 +8,7 @@ html, body {
 	margin: 0;
 }
 
+
 .full-height {
 	height: 100vh;
 }
@@ -48,4 +49,8 @@ html, body {
 
 .m-b-md {
 	margin-bottom: 30px;
+}
+
+.btn-m{
+	margin:5px 5px;
 }
