@@ -11,10 +11,14 @@
 |
 */
 
+//トップページ
 Route::get('/', function () {
     return view('welcome');
 });
 
+//ログイン機能
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+//お題画面
+Route::get('/themes', 'ThemaController@index')->name('themes');
