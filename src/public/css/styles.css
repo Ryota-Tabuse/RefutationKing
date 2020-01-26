@@ -8,6 +8,10 @@ html, body {
 	margin: 0;
 }
 
+.flex-item{
+	width: 100px;
+	height: 100px;
+}
 
 .full-height {
 	height: 100vh;
@@ -54,3 +58,4 @@ html, body {
 .btn-m{
 	margin:5px 5px;
 }
+
