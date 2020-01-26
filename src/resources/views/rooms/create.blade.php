@@ -7,7 +7,8 @@
 			<nav class="panel panel-default">
 				<div class="panel-heading"> 議論部屋を追加する </div>
 				<div class="panel-body">
-					<form action="{{ route('rooms.create',['thema_id' => $current_thema->id])}}" method="post"> @csrf
+					<form action="{{ route('rooms.create',['thema_id' => $current_thema->id])}}" method="post">
+						@csrf
 						<div class="form-group">
 							<label for="title"> 議論部屋名 </label>
 							<input type="text" class="form-control" name="name" id="name" />

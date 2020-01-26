@@ -7,7 +7,8 @@
 			<nav class="panel panel-default">
 				<div class="panel-heading"> 議論テーマを追加する </div>
 				<div class="panel-body">
-					<form action="{{ route('themes.create')}}" method="post"> @csrf
+					<form action="{{ route('themes.create')}}" method="post">
+						@csrf
 						<div class="form-group">
 							<label for="title"> 議論テーマ名 </label>
 							<input type="text" class="form-control" name="name" id="name" />
