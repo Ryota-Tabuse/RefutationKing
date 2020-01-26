@@ -10,9 +10,15 @@
 		</div>
 		<div class="links">
 			@foreach ($rooms as $room)
-			<a type="button" class="btn btn-light btn-m" {{-- href="{{ route('rooms.index', ['id' => $room->id]) }}"
-				--}}>{{$room->name}}</a>
-			</br>
+			<hr>
+			<div>
+				<button class="btn btn-primary btn-lg btn-m"
+					{{ isset($room->option_a_user_id) ? 'disabled' : '' }}>{{$current_thema->option_a}}</button>
+					{{$room->name}}
+				<button class="btn btn-primary btn-lg btn-m"
+					{{ isset($room->option_b_user_id) ? 'disabled' : '' }}>{{$current_thema->option_b}}</button>
+			</div>
+			<hr>
 			@endforeach
 		</div>
 		<a class="btn btn-primary btn-lg btn-m"
