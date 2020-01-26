@@ -14,7 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/', 'ThemesController@index')->name('themes');
 
 Auth::routes();
 
