@@ -17,13 +17,34 @@ class RoomController extends Controller
         $rooms = Room::where('thema_id', $current_thema->id)->get();
 
         //議論部屋選択画面に遷移
-        return view('rooms', [
+        return view('rooms/rooms', [
             'current_thema' => $current_thema,
             'rooms' => $rooms,
         ]);
     }
 
-    public function createRoom() {
-        
+    public function showCreateForm(int $thema_id) 
+    {
+        return view('rooms/create',[
+            'current_thema' => $thema_id
+        ]);
+    }
+
+    public function createRoom(Request $request) {
+
+        //選択されたお題を取得する
+        $current_thema = Thema::find($request->thema_id);
+        //インスタンス化
+        $room = new Room();
+        $room->name = $request->name;
+        $room->thema_id = $current_thema->id;
+        $room->save();
+
+        $rooms = Room::where('thema_id', $current_thema->id)->get();
+
+        return view('rooms/rooms',[
+            'rooms' => $rooms,
+            'current_thema' => $current_thema,
+        ]);
     }
 }
