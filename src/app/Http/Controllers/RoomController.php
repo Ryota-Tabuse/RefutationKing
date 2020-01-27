@@ -65,13 +65,24 @@ class RoomController extends Controller
         //参加したroomを取得
         $joinRoom = Room::find($request->room_id);
         //賛成した選択肢にuserを保存
-        Log::alert($select_option);
-        Log::alert(self::OPTION_B);
 
         $joinRoom = self::assignUserIdByOption($joinRoom, $select_option);
-        Log::alert($joinRoom);
         $joinRoom->save();
-        return view('chat');
+
+        //コメントを受け取るユーザを取得し、値を渡す。
+        $recieving_user_id = '';
+        if (strcmp($select_option, self::OPTION_A) == 0) {
+            $recieving_user_id = $joinRoom->option_b_user_id;
+        } else if (strcmp($select_option, self::OPTION_B == 0)) {
+            $recieving_user_id = $joinRoom->option_a_user_id;
+        } else {
+            throw new Exception('不正な送信です。');
+        }
+        return redirect()->route('chat.index', [
+            'thema_id' => $request->thema_id,
+            'room_id' => $joinRoom->id,
+            'recieving_user_id' => $recieving_user_id,
+        ]);
     }
 
     private function assignUserIdByOption(Room $room, string $select_option)

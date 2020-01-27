@@ -33,3 +33,4 @@ Route::post('themes/{thema_id}/rooms/join', 'RoomController@joinRoom')->name('ro
 
 //議論部屋チャット画面
 Route::get('themes/{thema_id}/rooms/{room_id}/chat', 'ChatController@index')->name('chat.index');
+Route::post('themes/{thema_id}/rooms/{room_id}/chat/create', 'ChatController@createMessage')->name('chat.createMessage');
