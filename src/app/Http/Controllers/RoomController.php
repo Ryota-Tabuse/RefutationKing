@@ -52,9 +52,9 @@ class RoomController extends Controller
 
         $rooms = Room::where('thema_id', $current_thema->id)->get();
 
-        return view('rooms/rooms', [
-            'rooms' => $rooms,
-            'current_thema' => $current_thema,
+        return redirect()->route('chat.index', [
+            'thema_id' => $request->thema_id,
+            'room_id' => $room->id,
         ]);
     }
 
@@ -81,7 +81,6 @@ class RoomController extends Controller
         return redirect()->route('chat.index', [
             'thema_id' => $request->thema_id,
             'room_id' => $joinRoom->id,
-            'recieving_user_id' => $recieving_user_id,
         ]);
     }
 

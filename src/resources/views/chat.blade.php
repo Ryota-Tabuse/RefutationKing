@@ -9,26 +9,27 @@
  
     {{--  チャットルーム  --}}
     <div id="room">
-        @foreach($messages as $key => $message)
+        @foreach($comments as $key => $comment)
             {{--   送信したメッセージ  --}}
-            @if($message->send == Auth::id())
+            @if($comment->sending_user_id == Auth::id())
                 <div class="send" style="text-align: right">
-                    <p>{{$message->message}}</p>
+                    <p>{{$comment->content}}</p>
                 </div>
  
             @endif
  
             {{--   受信したメッセージ  --}}
-            @if($message->recieve == Auth::id())
+            @if($comment->recieving_user_id == Auth::id())
                 <div class="recieve" style="text-align: left">
-                    <p>{{$message->message}}</p>
+                    <p>{{$comment->content}}</p>
                 </div>
             @endif
         @endforeach
     </div>
  
-    <form action="{{ route('chat.createMessage',['thema_id' => $current_thema->id])}}" method="post">
-        <textarea name="message" style="width:80%"></textarea>
+	<form action="{{ route('chat.createComment',['thema_id' => $thema_id,'room_id' => $room_id])}}" method="post">
+		@csrf
+        <textarea name="comment" style="width:80%"></textarea>
         <button type="submit" id="btn_send">送信</button>
     </form>
  
