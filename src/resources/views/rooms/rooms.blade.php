@@ -13,12 +13,19 @@
 			<hr>
 			@foreach ($rooms as $room)
 			<div>
-				<button type="submit" class="btn btn-primary btn-lg btn-m" name="option" value="option_a"
-					{{ isset($room->option_a_user_id) ? 'disabled' : '' }}>{{$current_thema->option_a}}
+				{{-- 自分が参加=>赤 自分が不参加=>青 --}}
+				<button type="submit"
+					class="btn btn-primary btn-lg btn-m {{$room->option_a_user_id === Auth::id() ? 'btn-success' : 'btn-primary'}} "
+					name="option" value="option_a"
+					{{ $room->option_a_user_id === Auth::id() || empty($room->option_a_user_id) ? '' : 'disabled' }}>
+					{{$current_thema->option_a}}
 				</button>
 				{{$room->name}}
-				<button type="submit" class="btn btn-primary btn-lg btn-m" name="option" value="option_b"
-					{{ isset($room->option_b_user_id) ? 'disabled' : '' }}>{{$current_thema->option_b}}
+				<button type="submit"
+					class="btn btn-primary btn-lg btn-m {{$room->option_b_user_id === Auth::id() ? 'btn-success' : 'btn-primary'}} "
+					name="option" value="option_b"
+					{{ ($room->option_b_user_id === Auth::id() || empty($room->option_b_user_id)) ? '' : 'disabled' }}>
+					{{$current_thema->option_b}}
 				</button>
 				<input type="hidden" name="room_id" value={{$room->id}}>
 			</div>
