@@ -97,11 +97,11 @@
 
 		//メッセージ送信
 		function send_btn_click() {
-			console.log('送信ぼたん押下');
+			console.log('送信ぼboboん押下');
 			// 大枠：$.ajax({}).done({}).fail({});
 			$.ajax({
 				type : 'POST',
-				url : 'http://localhost/chat/create',
+				url : '/chat/create',
 				data : {
 					content : $('textarea[name="comment"]').val(),
 					send : $('input[name="send"]').val(),
