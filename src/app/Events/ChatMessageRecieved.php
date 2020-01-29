@@ -9,8 +9,9 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
-class ChatMessageRecieved
+class ChatMessageRecieved implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -24,6 +25,7 @@ class ChatMessageRecieved
      */
     public function __construct($request)
     {
+        
         $this->request = $request;
     }
 
@@ -34,15 +36,23 @@ class ChatMessageRecieved
      */
     public function broadcastOn()
     {
-        return new Channel('chat-channel');
+ 
+        return new Channel('chat');
+ 
     }
 
+    /**
+     * ブロードキャストするデータを取得
+     *
+     * @return array
+     */
     public function broadcastWith()
     {
+ 
         return [
-            'message' => $this->request['message'],
-            'sending_user_id' => $this->request['send'],
-            'recieving_user_id' => $this->request['recieve'],
+            'message' => $this->request['content'],
+            'send' => $this->request['send'],
+            'recieve' => $this->request['recieve'],
         ];
     }
 

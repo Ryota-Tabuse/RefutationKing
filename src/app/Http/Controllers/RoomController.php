@@ -50,7 +50,6 @@ class RoomController extends Controller
         $room = self::assignUserIdByOption($room, $select_option);
         $room->save();
 
-        $rooms = Room::where('thema_id', $current_thema->id)->get();
 
         return redirect()->route('chat.index', [
             'thema_id' => $request->thema_id,

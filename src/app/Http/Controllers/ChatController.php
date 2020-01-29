@@ -6,6 +6,7 @@ use App\Comment;
 use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Events\ChatMessageRecieved;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SampleNotification;
@@ -17,7 +18,7 @@ class ChatController extends Controller
         //部屋を取得
         $current_room = Room::find($room_id);
         //部屋にひもづくメッセージの取得
-        $room_comments = Comment::where('room_id', $room_id)->get();
+        $room_comments = Comment::orderBy('created_at')->where('room_id', $room_id)->get();
         $param = [
             'send' => Auth::id(),
             'recieve' => self::getRecieveUserId($current_room),
@@ -33,7 +34,7 @@ class ChatController extends Controller
 
     public function createComment(Request $request)
     {   
-
+        
         $insertParam = [
             'content' => $request->content,
             'sending_user_id' => $request->send,
@@ -43,7 +44,7 @@ class ChatController extends Controller
 
         try{
             //値のインサート
-            Room::insert($insertParam);
+            Comment::insert($insertParam);
         }catch(\Exception $e) {
             return false;
         }
@@ -51,28 +52,7 @@ class ChatController extends Controller
         //イベントを投げる
         event(new ChatMessageRecieved($request->all()));
 
-        return true;
-
-        // $room_id = $request->room_id;
-        // //部屋にひもづくメッセージの取得
-        // $room_comments = Comment::where('room_id', $room_id)->get();
-
-        // $comment = new Comment();
-        // $comment->content = $request->comment;
-        // $comment->room_id = $room_id;
-        // $comment->sending_user_id = Auth::id();
-        // $current_room = Room::find($room_id);
-
-        // //自分ではないユーザを取得し、recieving_user_idに挿入
-        // $comment->recieving_user_id = self::getRecieveUserId($current_room);
-
-        // $comment->save();
-
-        // return view('chat', [
-        //     'thema_id' => $request->thema_id,
-        //     'room_id' => $request->room_id,
-        //     'comments' => $room_comments
-        // ]);
+        return 'true';
     }
 
     private function getRecieveUserId(Room $current_room) {
