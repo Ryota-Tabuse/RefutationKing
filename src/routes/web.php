@@ -18,7 +18,9 @@ Route::get('/', function () {
 
 //ログイン機能
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function () {
+    return view('welcome');
+});
 
 //お題画面
 Route::get('/themes', 'ThemaController@index')->name('themes');
