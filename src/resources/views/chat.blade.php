@@ -12,14 +12,14 @@
 		@foreach($comments as $key => $comment)
 		{{--   送信したメッセージ  --}}
 		@if($comment->sending_user_id == Auth::id())
-		<div class="send" style="text-align: right">
+		<div class="send comment-box_send" style="text-align: right">
 			<p>{{$comment->content}}</p>
 		</div>
 
 		{{--   受信したメッセージ  --}}
 		@else
-		<div class="recieve" style="text-align: left">
-			<p>{{$comment->content}}</p>
+		<div class="recieve comment-box_recieve" style="text-align: left">
+			<p class="comment-box_recieve">{{$comment->content}}</p>
 		</div>
 		@endif
 		@endforeach
@@ -27,8 +27,8 @@
 
 	<form>
 		@csrf
-		<textarea name="comment" style="width:80%"></textarea>
-		<button type="button" id="btn_send" onclick="send_btn_click();">送信</button>
+		<textarea class="chat_textarea" name="comment" style="width:80%"></textarea>
+		<button type="button" class="btn-m" id="btn_send" onclick="send_btn_click();">送信</button>
 
 	</form>
 
@@ -65,9 +65,9 @@
 		let login = $('input[name="login"]').val();
 
 		if(data.send === login){
-			appendText = '<div class="send" style="text-align:right"><p>' + data.message + '</p></div> ';
+			appendText = '<div class="send comment-box_send" style="text-align:right"><p>' + data.message + '</p></div> ';
 		}else{
-			appendText = '<div class="recieve" style="text-align:left"><p>' + data.message + '</p></div> ';
+			appendText = '<div class="recieve comment-box_recieve" style="text-align:left"><p>' + data.message + '</p></div> ';
 		}
 
 		// メッセージを表示

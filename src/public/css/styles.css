@@ -8,9 +8,11 @@ html, body {
 	margin: 0;
 }
 
-input[type=text] {
-	font-size: 16px;
-	transform: scale(0.8);
+textarea{
+	font-size: 17px;
+	height:2rem;
+	border-radius:3rem;
+	padding-left: 1rem;
 }
 
 .flex-item{
@@ -63,4 +65,18 @@ input[type=text] {
 .btn-m{
 	margin:5px 5px;
 }
+
+.comment-box_send {
+	background-color: lightgreen;
+	border-radius: 0.5rem;
+	padding-right: 0.8rem;
+}
+
+.comment-box_recieve {
+	background-color: lightgray;
+	border-radius: 0.5rem;
+	padding-left: 0.8rem;
+
+}
+
 
