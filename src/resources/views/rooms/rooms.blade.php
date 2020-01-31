@@ -1,12 +1,12 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="flex-center position-ref full-height">
+<div class="full-height container">
 	<div class="content">
 		<div class="m-b-md">
-			<h1>議論テーマ</h1>
-			<h2>「{{$current_thema->name}}」</h2>
-			<h3>※下記よりルームを選択するか、ルームを作成してください。</h3>
+			<h2>議論テーマ</h1>
+			<h3>「{{$current_thema->name}}」</h3>
+			<p>※下記よりルームを選択するか、ルームを作成してください。</p>
 		</div>
 		<form action="{{ route('rooms.join',['thema_id' => $current_thema->id]) }}" method="post">
 			@csrf

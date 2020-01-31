@@ -11,11 +11,9 @@
 
 	<!-- Scripts -->
 	@if(app('env') == 'production')
-		<script src="{{ secure_asset('js/app.js') }}" defer></script>
 		<link href="{{ secure_asset('css/styles.css') }}" rel="stylesheet">
 		<link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 	@else
-		<script src="{{ asset('js/app.js') }}" defer></script>
 		<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	@endif
@@ -85,12 +83,6 @@
 	<!-- Scripts -->
 	@section('footer')
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	@if(app('env') == 'production')
-		<script src="{{ secure_asset('js/app.js') }}"></script>
-	@else
-		<script src="{{ asset('js/app.js') }}"></script>
-	@endif
 	<script src="https://js.pusher.com/5.0/pusher.min.js"></script>
-	<script src=“https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js”> </script> 
 
 	@show </body> </html>

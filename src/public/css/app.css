@@ -310,7 +310,6 @@ input[type=month] {
 
 textarea {
   overflow: auto;
-  resize: vertical;
 }
 
 fieldset {
