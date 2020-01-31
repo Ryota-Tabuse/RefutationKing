@@ -23,20 +23,20 @@ https://pusher.com/
   [✔︎]DB接続
 
   [✔︎]DBテーブル、項目作成
-  
+
   [✔︎]フェイクデータ作成
-  
+
   [✔︎]ユーザログイン機能作成
-  
+
   [✔︎]お題一覧画面表示機能実装
-  
+
   [✔︎]ルーム一覧表示作成
 
   [✔︎]ルーム作成機能実装
-  
+
   [✔︎]チャット機能作成(同期処理)
-  
-  [✔︎]チャット機能作成(非同期処理)  
+
+  [✔︎]チャット機能作成(非同期処理)
 
   [✔︎]画面デザイン修正(レスポンシブ)
  🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
@@ -44,12 +44,12 @@ https://pusher.com/
  🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
 
   []投票機能実装
-  
-  
+
+
   []プロフィール作成機能実装
-  
+
   []テスト作成
-  
+
   []各種バリデーション確認、修正
 
 # 環境構築(Docker-laradock)
@@ -58,7 +58,7 @@ https://pusher.com/
 
 1. git submodule add [https://github.com/Laradock/laradock.git](https://github.com/Laradock/laradock.git)
 2. cd laradock
-3. cp env-example .env 
+3. cp env-example .env
 envファイルをexmapleからコピーして作成
 4. APP_CODE_PATH_HOST=../src
 
@@ -140,12 +140,12 @@ git configコマンドで設定を行う。
 
 APP_KEYの設定がうまくいっていませんでした。artisanコマンドを使用するため、laradockディレクトリに移動して、KEYを生成してみます。
 
-    
+
     base64:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 上記のようなKEYが生成されたので、それを設定してあげます。
 
-    $ RefutationKing % heroku config:set APP_KEY=base64:XXXXXXXXXXXXXXXXXXXXXXXX   
+    $ RefutationKing % heroku config:set APP_KEY=base64:XXXXXXXXXXXXXXXXXXXXXXXX
     Setting APP_KEY and restarting ⬢ refutation-king... done, v12
     APP_KEY: base64:XXXXXXXXXXXXXXXXXXXXXXXX
 
