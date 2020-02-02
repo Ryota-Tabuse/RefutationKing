@@ -3,25 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Thema;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateThema;
 
 class ThemaController extends Controller
 {
     public function index()
-    {   
+    {
         $themes = Thema::all();
 
-        return view('themes/themes',[
+        return view('themes/themes', [
             'themes' => $themes,
         ]);
     }
 
-    public function showCreateForm() 
+    public function showCreateForm()
     {
-        return view('themes/create',[]);
+        return view('themes/create', []);
     }
 
-    public function createThema(Request $request) {
+    public function createThema(CreateThema $request)
+    {
         //インスタンス化
         $thema = new Thema();
         $thema->name = $request->name;
@@ -31,8 +32,8 @@ class ThemaController extends Controller
 
         $themes = $themes = Thema::all();
 
-        return view('themes/themes',[
-            'themes' => $themes
+        return view('themes/themes', [
+            'themes' => $themes,
         ]);
     }
 }

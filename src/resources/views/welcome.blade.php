@@ -33,7 +33,7 @@
 
                 <div class="links">
                     <a href="/themes">Thema</a>
-                    <a href="https://laracasts.com">Vote</a>
+                    {{-- <a href="/rooms_votes">Vote</a> --}}
                     <a href="https://github.com/Ryota-Tabuse/RefutationKing">GitHub</a>
                 </div>
             </div>
