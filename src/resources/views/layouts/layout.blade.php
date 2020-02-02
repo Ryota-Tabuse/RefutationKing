@@ -11,11 +11,11 @@
 
 	<!-- Scripts -->
 	@if(app('env') == 'production')
-		<link href="{{ secure_asset('css/styles.css') }}" rel="stylesheet">
-		<link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ secure_asset('css/styles.css') }}" rel="stylesheet">
+	<link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 	@else
-		<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	@endif
 
 	<!-- Styles -->
@@ -53,24 +53,25 @@
 							</li>
 							@endif
 							@else
-							<li class="nav-item dropdown">
-								<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-									{{ Auth::user()->name }} <span class="caret"></span>
-								</a>
+							<div>
+								<li class="nav-item" style="float:right;">
+									{{-- <a class="nav-link" href="#" data-toggle="dropdown">
+										{{ Auth::user()->name }}</span>
+									</a> --}}
 
-								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+									{{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> --}}
 									<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-														 document.getElementById('logout-form').submit();">
-										{{ __('Logout') }}
+															 document.getElementById('logout-form').submit();">
+										{{ __('ログアウト') }}
 									</a>
 
-									<form id="logout-form" action="{{ route('logout') }}" method="POST"
-										style="display: none;">
+									<form id="logout-form" action="{{ route('logout') }}" method="POST">
 										@csrf
 									</form>
-								</div>
-							</li>
+									{{-- </div> --}}
+								</li>
+							</div>
+
 							@endguest
 						</ul>
 					</div>
@@ -85,4 +86,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 
-	@show </body> </html>
+	@show
+</body>
+
+</html>
