@@ -34,7 +34,7 @@ Route::post('/themes/create', 'ThemaController@createThema')->name('themes.creat
 Route::get('themes/{thema}/rooms', 'RoomController@index')->name('rooms.index');
 Route::get('themes/{thema}/rooms/create', 'RoomController@showCreateForm')->name('rooms.create');
 Route::post('themes/{thema_id}/rooms/create', 'RoomController@createRoom')->name('rooms.create');
-Route::post('themes/{thema_id}/rooms/join', 'RoomController@joinRoom')->name('rooms.join');
+Route::post('themes/{thema}/rooms/join', 'RoomController@joinRoom')->name('rooms.join');
 
 //議論部屋チャット画面
 Route::get('themes/{thema}/rooms/{room}/chat', 'ChatController@index')->name('chat.index');
