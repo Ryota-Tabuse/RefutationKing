@@ -23,8 +23,8 @@
 
 <body>
 	<header>
-		<div id="app">
-			<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+		<div id="app" style="position:fixed;width:100%;">
+			<nav ≈ class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 				<div class="container">
 					<a class="navbar-brand" href="{{ url('/') }}">
 						{{ config('app.name', '論破王') }}
