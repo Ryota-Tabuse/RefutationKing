@@ -17,10 +17,10 @@
                 <div class="top-right links">
                     @auth
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">ログイン</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">登録</a>
                         @endif
                     @endauth
                 </div>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="/themes">Thema</a>
+                    <a href="/themes">議題一覧</a>
                     {{-- <a href="/rooms_votes">Vote</a> --}}
                     <a href="https://github.com/Ryota-Tabuse/RefutationKing">GitHub</a>
                 </div>

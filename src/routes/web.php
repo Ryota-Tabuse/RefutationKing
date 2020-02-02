@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', function () {
     return view('welcome');
-});
+})->name('home');
 
 //投票可能部屋一覧
 Route::get('/rooms_votes', 'RoomVoteController@index');
