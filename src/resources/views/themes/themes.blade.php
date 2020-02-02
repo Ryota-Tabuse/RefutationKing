@@ -9,7 +9,7 @@
 		<div class="links">
 			@foreach ($themes as $thema)
 			<a type="button" class="btn btn-light btn-m"
-				href="{{ route('rooms.index', ['thema_id' => $thema->id]) }}">{{$thema->name}}</a>
+				href="{{ route('rooms.index', ['thema' => $thema]) }}">{{$thema->name}}</a>
 			</br>
 			@endforeach
 		</div>

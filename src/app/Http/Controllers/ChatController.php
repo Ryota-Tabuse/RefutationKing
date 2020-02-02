@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
+use App\Thema;
 use App\Room;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use App\Events\ChatMessageRecieved;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\SampleNotification;
 
 class ChatController extends Controller
 {
-    public function index(int $thema_id, int $room_id)
+    public function index(Thema $thema, Room $room)
     {
         //部屋を取得
-        $current_room = Room::find($room_id);
+        $current_room = Room::find($room->id);
         //部屋にひもづくメッセージの取得
-        $room_comments = Comment::orderBy('created_at')->where('room_id', $room_id)->get();
+        $room_comments = Comment::orderBy('created_at')->where('room_id', $room->id)->get();
         $param = [
             'send' => Auth::id(),
             'recieve' => self::getRecieveUserId($current_room),
@@ -26,15 +24,14 @@ class ChatController extends Controller
 
         return view('chat', [
             'param' => $param,
-            'thema_id' => $thema_id,
-            'room_id' => $room_id,
-            'comments' => $room_comments
+            'thema_id' => $thema->id,
+            'room_id' => $room->id,
+            'comments' => $room_comments,
         ]);
     }
 
     public function createComment(Request $request)
-    {   
-        
+    {
         $insertParam = [
             'content' => $request->content,
             'sending_user_id' => $request->send,
@@ -42,10 +39,10 @@ class ChatController extends Controller
             'room_id' => $request->room_id,
         ];
 
-        try{
+        try {
             //値のインサート
             Comment::insert($insertParam);
-        }catch(\Exception $e) {
+        } catch (\Exception $e) {
             return false;
         }
 
@@ -55,7 +52,8 @@ class ChatController extends Controller
         return 'true';
     }
 
-    private function getRecieveUserId(Room $current_room) {
+    private function getRecieveUserId(Room $current_room)
+    {
         //roomのどちらがが自分の前提でoptionAのユーザを仮ユーザとする
         $temp_user_id = $current_room->option_a_user_id;
         //仮ユーザが自分ではない場合、そのまま返却する。
