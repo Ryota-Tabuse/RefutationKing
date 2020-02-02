@@ -8,7 +8,7 @@
 				<h3>「{{$current_thema->name}}」</h3>
 				<p>※下記よりルームを選択するか、ルームを作成してください。</p>
 		</div>
-		<form action="{{ route('rooms.join',['thema_id' => $current_thema->id]) }}" method="post">
+		<form action="{{ route('rooms.join',['thema' => $current_thema]) }}" method="post">
 			@csrf
 			<hr>
 			@foreach ($rooms as $room)

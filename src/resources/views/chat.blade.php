@@ -2,40 +2,44 @@
 
 @section('content')
 <div class="container">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+	<div class="content">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<h2>{{$thema->name}}</h2>
+			</div>
 		</div>
+
+		{{--  チャットルーム  --}}
+		<div id="room">
+			@foreach($comments as $key => $comment)
+			{{--   送信したメッセージ  --}}
+			@if($comment->sending_user_id == Auth::id())
+			<div class="send comment-box_send" style="text-align: right">
+				<p>{{$comment->content}}</p>
+			</div>
+
+			{{--   受信したメッセージ  --}}
+			@else
+			<div class="recieve comment-box_recieve" style="text-align: left">
+				<p class="comment-box_recieve">{{$comment->content}}</p>
+			</div>
+			@endif
+			@endforeach
+		</div>
+
+		<form>
+			@csrf
+			<textarea class="chat_textarea" name="comment" style="width:80%"></textarea>
+			<button type="button" class="btn-m" id="btn_send" onclick="send_btn_click();">送信</button>
+
+		</form>
+
+		<input type="hidden" name="send" value="{{$param['send']}}">
+		<input type="hidden" name="room_id" value="{{$room->id}}">
+		<input type="hidden" name="recieve" value="{{$param['recieve']}}">
+		<input type="hidden" name="login" value="{{Auth::id()}}">
 	</div>
 
-	{{--  チャットルーム  --}}
-	<div id="room">
-		@foreach($comments as $key => $comment)
-		{{--   送信したメッセージ  --}}
-		@if($comment->sending_user_id == Auth::id())
-		<div class="send comment-box_send" style="text-align: right">
-			<p>{{$comment->content}}</p>
-		</div>
-
-		{{--   受信したメッセージ  --}}
-		@else
-		<div class="recieve comment-box_recieve" style="text-align: left">
-			<p class="comment-box_recieve">{{$comment->content}}</p>
-		</div>
-		@endif
-		@endforeach
-	</div>
-
-	<form>
-		@csrf
-		<textarea class="chat_textarea" name="comment" style="width:80%"></textarea>
-		<button type="button" class="btn-m" id="btn_send" onclick="send_btn_click();">送信</button>
-
-	</form>
-
-	<input type="hidden" name="send" value="{{$param['send']}}">
-	<input type="hidden" name="room_id" value="{{$room_id}}">
-	<input type="hidden" name="recieve" value="{{$param['recieve']}}">
-	<input type="hidden" name="login" value="{{Auth::id()}}">
 
 </div>
 

@@ -8,7 +8,7 @@
 		</div>
 		<div class="links">
 			@foreach ($themes as $thema)
-			<a type="button" class="btn btn-light btn-m"
+			<a type="button" class="btn-thema"
 				href="{{ route('rooms.index', ['thema' => $thema]) }}">{{$thema->name}}</a>
 			</br>
 			@endforeach

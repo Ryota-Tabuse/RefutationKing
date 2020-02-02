@@ -24,8 +24,8 @@ class ChatController extends Controller
 
         return view('chat', [
             'param' => $param,
-            'thema_id' => $thema->id,
-            'room_id' => $room->id,
+            'thema' => $thema,
+            'room' => $room,
             'comments' => $room_comments,
         ]);
     }

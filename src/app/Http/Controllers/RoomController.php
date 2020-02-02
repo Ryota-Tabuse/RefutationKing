@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Thema;
 use App\Room;
+use Illuminate\Http\Request;
 use App\Http\Requests\CreateRoom;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class RoomController extends Controller
 {
@@ -65,8 +67,10 @@ class RoomController extends Controller
         ]);
     }
 
-    public function joinRoom(CreateRoom $request)
+    public function joinRoom(Request $request)
     {
+        Log::alert('ルーム参加');
+
         //賛成した選択肢を取得
         $select_option = $request->option;
         //参加したroomを取得
@@ -86,10 +90,8 @@ class RoomController extends Controller
             throw new Exception('不正な送信です。');
         }
 
-        $thema = Thema::find($request->thema);
-
         return redirect()->route('chat.index', [
-            'thema' => $thema,
+            'thema' => $request->thema,
             'room' => $joinRoom,
         ]);
     }
