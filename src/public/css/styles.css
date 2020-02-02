@@ -69,7 +69,12 @@ textarea{
 	display: inline-block;
 	width:80%;
 	background-color: #bbe1fa;
-	padding:200px 8px;
+	padding:20px 8px;
+}
+
+.btn_chat{
+	display: inline-block;
+	padding:20px 8px;
 }
 
 .btn-m{

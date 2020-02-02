@@ -30,8 +30,7 @@
 		<form>
 			@csrf
 			<textarea class="chat_textarea" name="comment" style="width:80%"></textarea>
-			<button type="button" class="btn-m" id="btn_send" onclick="send_btn_click();">送信</button>
-
+			<button type="button" class="btn_chat" id="btn_send" onclick="send_btn_click();">送信</button>
 		</form>
 
 		<input type="hidden" name="send" value="{{$param['send']}}">
