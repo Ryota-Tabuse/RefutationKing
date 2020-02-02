@@ -1,7 +1,7 @@
 
 html, body {
-	background-color: #fff;
-	color: #636b6f;
+	background-color: #bbe1fa;
+	color: #1b262c;
 	font-family: serif;
 	font-weight: 200;
 	height: 100vh;
@@ -14,6 +14,7 @@ textarea{
 	border-radius:3rem;
 	padding-left: 1rem;
 }
+
 
 .flex-item{
 	width: 100px;
@@ -42,6 +43,7 @@ textarea{
 
 .content {
 	text-align: center;
+	padding-top:100px;
 }
 
 .title {
@@ -49,16 +51,25 @@ textarea{
 }
 
 .links > a {
-	color: #636b6f;
-	padding: 0 25px;
-	font-size: 13px;
+	color:#1b262c;
+	padding: 1rem 25px;
+	margin:0.5rem 0 0.5rem 0;
+	font-size: 25px;
 	font-weight: 600;
 	letter-spacing: .1rem;
 	text-decoration: none;
+	border-radius: 1rem;
 }
 
 .m-b-md {
 	margin-bottom: 30px;
+}
+
+.btn-thema{
+	display: inline-block;
+	width:80%;
+	background-color: #bbe1fa;
+	padding:200px 8px;
 }
 
 .btn-m{
