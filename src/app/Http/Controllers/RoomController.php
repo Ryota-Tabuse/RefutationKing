@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Thema;
 use App\Room;
+use Faker\Provider\zh_TW\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Carbon;
 
 class RoomController extends Controller
 {
     public const OPTION_A = 'option_a';
     public const OPTION_B = 'option_b';
-
+    public const ADD_DATE = 1;
     public function index(int $thema_id)
     {
         //選択されたお題を取得する
@@ -36,7 +39,8 @@ class RoomController extends Controller
     }
 
     public function createRoom(Request $request)
-    {
+    {   
+        
 
         //選択されたお題を取得する
         $current_thema = Thema::find($request->thema_id);
@@ -48,6 +52,11 @@ class RoomController extends Controller
         //賛成選択肢を取得し、対象の選択肢にユーザIDを保存
         $select_option = $request->option;
         $room = self::assignUserIdByOption($room, $select_option);
+        //議論終了の制限時間を24時間後とする
+        $room->end_datetime_discussion = Carbon::now()->addDay();
+        Log::alert('Now' . time());
+        Log::alert('Now' .  date("Y/m/d H:i:s"));
+        //保存
         $room->save();
 
 

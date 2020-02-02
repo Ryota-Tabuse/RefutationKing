@@ -17,14 +17,16 @@
 				<button type="submit"
 					class="btn btn-primary btn-lg btn-m {{$room->option_a_user_id === Auth::id() ? 'btn-success' : 'btn-primary'}} "
 					name="option" value="option_a"
-					{{ $room->option_a_user_id === Auth::id() || empty($room->option_a_user_id) ? '' : 'disabled' }}>
+					{{ ($room->option_a_user_id === Auth::id() && empty($room->option_a_user_id) ? '' : 'disabled' && $room->option_b_user_id !== Auth::id()) ? '' : 'disabled'}}>
+					<!-- TODO 条件が複雑なため、Controller側に移植すること -->
 					{{$current_thema->option_a}}
 				</button>
 				{{$room->name}}
 				<button type="submit"
 					class="btn btn-primary btn-lg btn-m {{$room->option_b_user_id === Auth::id() ? 'btn-success' : 'btn-primary'}} "
 					name="option" value="option_b"
-					{{ ($room->option_b_user_id === Auth::id() || empty($room->option_b_user_id)) ? '' : 'disabled' }}>
+					{{ (($room->option_b_user_id === Auth::id() && empty($room->option_b_user_id)) && $room->option_a_user_id !== Auth::id()) ? '' : 'disabled'}}>
+					<!-- TODO 条件が複雑なため、Controller側に移植すること -->
 					{{$current_thema->option_b}}
 				</button>
 				<input type="hidden" name="room_id" value={{$room->id}}>
