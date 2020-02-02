@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Thema;
 use App\Room;
-use Faker\Provider\zh_TW\DateTime;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateRoom;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Carbon;
 
 class RoomController extends Controller
@@ -15,6 +13,7 @@ class RoomController extends Controller
     public const OPTION_A = 'option_a';
     public const OPTION_B = 'option_b';
     public const ADD_DATE = 1;
+
     public function index(int $thema_id)
     {
         //選択されたお題を取得する
@@ -33,15 +32,14 @@ class RoomController extends Controller
     {
         //選択されたお題を取得する
         $current_thema = Thema::find($thema_id);
+
         return view('rooms/create', [
             'current_thema' => $current_thema,
         ]);
     }
 
-    public function createRoom(Request $request)
-    {   
-        
-
+    public function createRoom(CreateRoom $request)
+    {
         //選択されたお題を取得する
         $current_thema = Thema::find($request->thema_id);
 
@@ -54,11 +52,8 @@ class RoomController extends Controller
         $room = self::assignUserIdByOption($room, $select_option);
         //議論終了の制限時間を24時間後とする
         $room->end_datetime_discussion = Carbon::now()->addDay();
-        Log::alert('Now' . time());
-        Log::alert('Now' .  date("Y/m/d H:i:s"));
         //保存
         $room->save();
-
 
         return redirect()->route('chat.index', [
             'thema_id' => $request->thema_id,
@@ -66,7 +61,7 @@ class RoomController extends Controller
         ]);
     }
 
-    public function joinRoom(Request $request)
+    public function joinRoom(CreateRoom $request)
     {
         //賛成した選択肢を取得
         $select_option = $request->option;
@@ -81,11 +76,12 @@ class RoomController extends Controller
         $recieving_user_id = '';
         if (strcmp($select_option, self::OPTION_A) == 0) {
             $recieving_user_id = $joinRoom->option_b_user_id;
-        } else if (strcmp($select_option, self::OPTION_B == 0)) {
+        } elseif (strcmp($select_option, self::OPTION_B == 0)) {
             $recieving_user_id = $joinRoom->option_a_user_id;
         } else {
             throw new Exception('不正な送信です。');
         }
+
         return redirect()->route('chat.index', [
             'thema_id' => $request->thema_id,
             'room_id' => $joinRoom->id,
@@ -96,11 +92,12 @@ class RoomController extends Controller
     {
         if (strcmp($select_option, self::OPTION_A) == 0) {
             $room->option_a_user_id = Auth::id();
-        } else if (strcmp($select_option, self::OPTION_B == 0)) {
+        } elseif (strcmp($select_option, self::OPTION_B == 0)) {
             $room->option_b_user_id = Auth::id();
         } else {
             throw new Exception('不正な送信です。');
         }
+
         return $room;
     }
 }

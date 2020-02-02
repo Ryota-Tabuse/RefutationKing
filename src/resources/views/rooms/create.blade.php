@@ -6,6 +6,15 @@
 		<div class="col col-md-offset-3 col-md-6">
 			<nav class="panel panel-default">
 				<div class="panel-heading"> 議論部屋を追加する </div>
+				@if ($errors->any())
+				<div class="alert alert-danger">
+					<ul>
+						@foreach ($errors->all() as $error)
+						<li>{{$error}}</li>
+						@endforeach
+					</ul>
+				</div>
+				@endif
 				<div class="panel-body">
 					<form action="{{ route('rooms.create',['thema_id' => $current_thema->id])}}" method="post">
 						@csrf
