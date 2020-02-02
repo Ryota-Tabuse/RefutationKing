@@ -4,16 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Thema;
 use App\Http\Requests\CreateThema;
-use Illuminate\Support\Facades\Auth;
 
 class ThemaController extends Controller
 {
     public function index()
     {
-        //TODO 現状はログインユーザ限定とする。
-        if (Auth::id() === null) {
-            return redirect()->route('login');
-        }
         $themes = Thema::all();
 
         return view('themes/themes', [

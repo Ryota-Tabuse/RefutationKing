@@ -14,10 +14,14 @@ class RoomController extends Controller
     public const OPTION_B = 'option_b';
     public const ADD_DATE = 1;
 
-    public function index(int $thema_id)
+    public function index(Thema $thema)
     {
+        //TODO 現状はログインユーザ限定とする。
+        if (Auth::id() === null) {
+            return redirect()->route('login');
+        }
         //選択されたお題を取得する
-        $current_thema = Thema::find($thema_id);
+        $current_thema = Thema::find($thema->id);
         //お題に紐づく議論部屋一覧を取得
         $rooms = Room::where('thema_id', $current_thema->id)->get();
 
@@ -28,10 +32,10 @@ class RoomController extends Controller
         ]);
     }
 
-    public function showCreateForm(int $thema_id)
+    public function showCreateForm(Thema $thema)
     {
         //選択されたお題を取得する
-        $current_thema = Thema::find($thema_id);
+        $current_thema = Thema::find($thema->id);
 
         return view('rooms/create', [
             'current_thema' => $current_thema,
@@ -56,8 +60,8 @@ class RoomController extends Controller
         $room->save();
 
         return redirect()->route('chat.index', [
-            'thema_id' => $request->thema_id,
-            'room_id' => $room->id,
+            'thema' => $current_thema,
+            'room' => $room,
         ]);
     }
 
@@ -82,9 +86,11 @@ class RoomController extends Controller
             throw new Exception('不正な送信です。');
         }
 
+        $thema = Thema::find($request->thema);
+
         return redirect()->route('chat.index', [
-            'thema_id' => $request->thema_id,
-            'room_id' => $joinRoom->id,
+            'thema' => $thema,
+            'room' => $joinRoom,
         ]);
     }
 
