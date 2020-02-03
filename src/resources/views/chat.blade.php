@@ -14,14 +14,14 @@
 			@foreach($comments as $key => $comment)
 			{{--   送信したメッセージ  --}}
 			@if($comment->sending_user_id == Auth::id())
-			<div class="send comment-box_send" style="text-align: right">
-				<p>{{$comment->content}}</p>
+			<div class="send comment-box_send" style="text-align: right; width:80%;">
+				<p >{{$comment->content}}</p>
 			</div>
 
 			{{--   受信したメッセージ  --}}
 			@else
-			<div class="recieve comment-box_recieve" style="text-align: left">
-				<p class="comment-box_recieve">{{$comment->content}}</p>
+			<div class="recieve comment-box_recieve" style="text-align: left; width:80%;">
+				<p class="-box_recieve">{{$comment->content}}</p>
 			</div>
 			@endif
 			@endforeach
