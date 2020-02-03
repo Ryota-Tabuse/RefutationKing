@@ -23,7 +23,7 @@
 
 <body>
 	<header>
-		<div id="app" style="position:fixed;width:100%;">
+		<div id="app" class="header" style="position:fixed;width:100%;">
 			<nav ≈ class="navbar navbar-expand-md navbar-dark bg-blue shadow-sm">
 				<div class="container">
 					<a class="navbar-brand" href="{{ url('/') }}">

@@ -20,7 +20,12 @@ textarea{
 	padding-left: 1rem;
 }
 
-
+.header {
+	z-index: 9999;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
 .bg-dark-blue{
 	background-color:#1b262c;
 }
@@ -162,4 +167,8 @@ textarea{
 
 .tx-align-l{
 	text-align: left;
+}
+
+.comment{
+	word-break: break-all;
 }

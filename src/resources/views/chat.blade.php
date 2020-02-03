@@ -4,42 +4,46 @@
 <div class="container">
 	<div class="content">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<h2>{{$thema->name}}</h2>
+			<div class="col-md-2"></div>
+			<div class="col-sm-10 col-md-8">
+				<h1>{{$thema->name}}</h1>
+
+
+
+
+
+				{{--  チャットルーム  --}}
+				<div id="room">
+					@foreach($comments as $key => $comment)
+					{{--   送信したメッセージ  --}}
+					@if($comment->sending_user_id == Auth::id())
+					<div class="send comment-box_send" style="text-align: right;">
+						<p class="comment">{{$comment->content}}</p>
+					</div>
+
+					{{--   受信したメッセージ  --}}
+					@else
+					<div class="recieve comment-box_recieve" style="text-align: left;">
+						<p class="comment">{{$comment->content}}</p>
+					</div>
+					@endif
+					@endforeach
+				</div>
+
+				<form>
+					@csrf
+					<textarea class="chat_textarea" name="comment" style="width:80%"></textarea>
+					<button type="button" class="btn_chat" id="btn_send" onclick="send_btn_click();">送信</button>
+				</form>
+
+				<input type="hidden" name="send" value="{{$param['send']}}">
+				<input type="hidden" name="room_id" value="{{$room->id}}">
+				<input type="hidden" name="recieve" value="{{$param['recieve']}}">
+				<input type="hidden" name="login" value="{{Auth::id()}}">
 			</div>
 		</div>
-
-		{{--  チャットルーム  --}}
-		<div id="room">
-			@foreach($comments as $key => $comment)
-			{{--   送信したメッセージ  --}}
-			@if($comment->sending_user_id == Auth::id())
-			<div class="send comment-box_send" style="text-align: right; width:80%;">
-				<p >{{$comment->content}}</p>
-			</div>
-
-			{{--   受信したメッセージ  --}}
-			@else
-			<div class="recieve comment-box_recieve" style="text-align: left; width:80%;">
-				<p class="-box_recieve">{{$comment->content}}</p>
-			</div>
-			@endif
-			@endforeach
-		</div>
-
-		<form>
-			@csrf
-			<textarea class="chat_textarea" name="comment" style="width:80%"></textarea>
-			<button type="button" class="btn_chat" id="btn_send" onclick="send_btn_click();">送信</button>
-		</form>
-
-		<input type="hidden" name="send" value="{{$param['send']}}">
-		<input type="hidden" name="room_id" value="{{$room->id}}">
-		<input type="hidden" name="recieve" value="{{$param['recieve']}}">
-		<input type="hidden" name="login" value="{{Auth::id()}}">
+		<div class="col-md-2"></div>
 	</div>
-
-
 </div>
 
 @endsection
@@ -100,8 +104,6 @@
 
 		//メッセージ送信
 		function send_btn_click() {
-			console.log('送信ぼboboん押下');
-			// 大枠：$.ajax({}).done({}).fail({});
 			$.ajax({
 				type : 'POST',
 				url : '/chat/create',
@@ -113,7 +115,7 @@
 				}
 
 			}).done(function(result) {
-				$('textarea[name="message"]').val('');
+				$('textarea[name="comment"]').val('');
 				console.log('done');
 
 			}).fail(function(result){
