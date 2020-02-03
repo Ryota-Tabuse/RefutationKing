@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateRoom;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Log;
 
 class RoomController extends Controller
 {
@@ -26,7 +25,6 @@ class RoomController extends Controller
         $current_thema = Thema::find($thema->id);
         //お題に紐づく議論部屋一覧を取得
         $rooms = Room::where('thema_id', $current_thema->id)->get();
-        Log::alert('一覧画面◆◆◆◆◆◆◆◆◆'.$rooms);
         //議論部屋選択画面に遷移
         return view('rooms/rooms', [
             'current_thema' => $current_thema,
@@ -87,7 +85,6 @@ class RoomController extends Controller
         } else {
             throw new Exception('不正な送信です。');
         }
-        Log::alert('◆'.$joinRoom);
 
         return redirect()->route('chat.index', [
             'thema' => $request->thema,
@@ -104,7 +101,6 @@ class RoomController extends Controller
         } else {
             throw new Exception('不正な送信です。');
         }
-        Log::alert($room);
 
         return $room;
     }
