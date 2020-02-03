@@ -42,13 +42,18 @@ https://pusher.com/
 
   [✔︎]第一次リリース(Heroku)👏🥇🎉
 
-  [取組中]投票機能実装
+  []各種バリデーション確認、修正
+    []不正ルーム参加時対応
+    
+  []デザイン修正(Webブラウザ)  
+    
+  []投票機能実装
 
   []プロフィール作成機能実装
 
   []テスト作成
 
-  []各種バリデーション確認、修正
+  []デザイン修正(モバイル)
 
 # 環境構築(Docker-laradock)
 
@@ -86,15 +91,11 @@ envファイルをexmapleからコピーして作成
 2. `heroku create <アプリ名>`
 3. 管理画面にAppが生成されていることを確認
 
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f5719b4f-5d9e-4760-8c7a-8df0a0579d27/_2020-01-29_23.24.32.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f5719b4f-5d9e-4760-8c7a-8df0a0579d27/_2020-01-29_23.24.32.png)
 
 # アドオンを追加
 
 ・対象のアプリを選び遷移先で、Resourcesタブを押下。
-
 ・postgressを検索して追加
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18ac9160-d445-432e-a160-8253bb243290/_2020-01-29_23.29.14.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18ac9160-d445-432e-a160-8253bb243290/_2020-01-29_23.29.14.png)
 
 ※10000レコードしか保存できない点は要注意
 
@@ -173,7 +174,6 @@ app/配下をデプロイするコマンド。
 
 ・Pusher Channelsも追加。
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/23c4f09b-b48a-48a5-b1d0-19e5cd45df7f/_2020-01-29_23.34.17.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/23c4f09b-b48a-48a5-b1d0-19e5cd45df7f/_2020-01-29_23.34.17.png)
 
 ・PusherチャンネルにてAPPKEYなどを確認し、Herokuに登録
 
@@ -183,7 +183,3 @@ app/配下をデプロイするコマンド。
     heroku config:set PUSHER_APP_CLUSTER=XXX
     //ブロードキャストをpusherに変更
     heroku config:set BROADCAST_DRIVER=pusher
-
-これでできました！
-
-動いた〜〜〜〜〜〜〜〜〜
