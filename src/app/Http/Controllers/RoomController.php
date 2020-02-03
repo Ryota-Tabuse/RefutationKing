@@ -26,7 +26,7 @@ class RoomController extends Controller
         $current_thema = Thema::find($thema->id);
         //お題に紐づく議論部屋一覧を取得
         $rooms = Room::where('thema_id', $current_thema->id)->get();
-
+        Log::alert('一覧画面◆◆◆◆◆◆◆◆◆'.$rooms);
         //議論部屋選択画面に遷移
         return view('rooms/rooms', [
             'current_thema' => $current_thema,
@@ -69,8 +69,6 @@ class RoomController extends Controller
 
     public function joinRoom(Request $request)
     {
-        Log::alert('ルーム参加');
-
         //賛成した選択肢を取得
         $select_option = $request->option;
         //参加したroomを取得
@@ -89,6 +87,7 @@ class RoomController extends Controller
         } else {
             throw new Exception('不正な送信です。');
         }
+        Log::alert('◆'.$joinRoom);
 
         return redirect()->route('chat.index', [
             'thema' => $request->thema,
@@ -105,6 +104,7 @@ class RoomController extends Controller
         } else {
             throw new Exception('不正な送信です。');
         }
+        Log::alert($room);
 
         return $room;
     }
