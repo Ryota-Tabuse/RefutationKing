@@ -91,7 +91,6 @@ envファイルをexmapleからコピーして作成
 2. `heroku create <アプリ名>`
 3. 管理画面にAppが生成されていることを確認
 
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f5719b4f-5d9e-4760-8c7a-8df0a0579d27/_2020-01-29_23.24.32.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f5719b4f-5d9e-4760-8c7a-8df0a0579d27/_2020-01-29_23.24.32.png)
 
 # アドオンを追加
 
