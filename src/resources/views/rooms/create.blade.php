@@ -9,7 +9,7 @@
 				<nav class="panel panel-default">
 					<h1> 議論部屋を追加する </h1>
 					@if ($errors->any())
-					<div class="alert alert-danger">
+					<div class="alert alert-danger tx-align-l">
 						<ul>
 							@foreach ($errors->all() as $error)
 							<li>{{$error}}</li>
@@ -25,18 +25,16 @@
 								<input type="text" class="form-control" name="name" id="name" />
 							</div>
 							<div>
-								<label for="title"> 下記選択肢からどちらかを選び、<br/>選んだ側の立場に立って議論をしてください。 </label>
+								<label for="title"> 下記選択肢からどちらかを選び、<br />選んだ側の立場に立って議論をしてください。 </label>
 								<div class="form-check">
-									<label class="form-check-label" for="radio1a">
-									<input class="form-check-input" typeÏ="radio" name="option" value="option_a"
+									<input class="form-check-input" type="radio" name="option" value="option_a"
 										id="option_a" checked>
-									{{$current_thema->option_a}}</label>
+									<label class="form-check-label" for="radio1a">{{$current_thema->option_a}}</label>
 								</div>
 								<div class="form-check">
-									<label class="form-check-label" for="radio1b">
 									<input class="form-check-input" type="radio" name="option" value="option_b"
 										id="option_b">
-									{{$current_thema->option_b}}</label>
+									<label class="form-check-label" for="radio1b">{{$current_thema->option_b}}</label>
 								</div>
 							</div>
 

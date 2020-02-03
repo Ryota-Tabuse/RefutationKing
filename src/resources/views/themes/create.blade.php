@@ -9,7 +9,7 @@
 				<nav class="panel panel-default">
 					<h1> 議論テーマを追加する </h1>
 					@if ($errors->any())
-					<div class="alert alert-danger">
+					<div class="alert alert-danger tx-align-l">
 						<ul>
 							@foreach ($errors->all() as $error)
 							<li>{{$error}}</li>
