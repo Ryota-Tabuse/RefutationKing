@@ -13,11 +13,17 @@ a{
 	text-decoration: none;
 }
 
-textarea{
-	font-size: 17px;
-	height:2rem;
-	border-radius:3rem;
-	padding-left: 1rem;
+h2{
+	background-color: #3282b8;
+	color: #bbe1fa;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	border-radius: 1rem;
+}
+
+#room{
+	margin:2rem;
+	padding:3rem;
 }
 
 .header {
@@ -75,6 +81,14 @@ textarea{
 
 .position-ref {
 	position: relative;
+}
+
+.chat-textarea textarea{
+	font-size: 17px;
+	height:1.8rem;
+	width: 100%;
+	border-radius:0.4rem;
+	padding-left: 1rem;
 }
 
 .top-right {
@@ -152,13 +166,14 @@ textarea{
 	background-color: lightgreen;
 	border-radius: 0.5rem;
 	padding-right: 0.8rem;
+	text-align: right;
 }
 
 .comment-box_recieve {
 	background-color: lightgray;
 	border-radius: 0.5rem;
 	padding-left: 0.8rem;
-
+	text-align: left;
 }
 
 .tx-align-r{

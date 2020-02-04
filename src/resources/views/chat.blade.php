@@ -7,23 +7,35 @@
 			<div class="col-md-2"></div>
 			<div class="col-sm-10 col-md-8">
 				<h1>{{$thema->name}}</h1>
-
-
-
-
-
+				<div class="row">
+					@if ($room->option_a_user_id == Auth::id())
+					<div class="col col-md-6">
+						<h2>{{$thema->option_b}}</h2>
+					</div>
+					<div class="col col-md-6">
+						<h2>{{$thema->option_a}}</h2>
+					</div>
+					@else
+					<div class="col col-md-6">
+						<h2>{{$thema->option_a}}</h2>
+					</div>
+					<div class="col col-md-6">
+						<h2>{{$thema->option_b}}</h2>
+					</div>
+					@endif
+				</div>
 				{{--  チャットルーム  --}}
-				<div id="room">
+				<div id="room" class="bg-blue">
 					@foreach($comments as $key => $comment)
 					{{--   送信したメッセージ  --}}
 					@if($comment->sending_user_id == Auth::id())
-					<div class="send comment-box_send" style="text-align: right;">
+					<div class="send comment-box_send">
 						<p class="comment">{{$comment->content}}</p>
 					</div>
 
 					{{--   受信したメッセージ  --}}
 					@else
-					<div class="recieve comment-box_recieve" style="text-align: left;">
+					<div class="recieve comment-box_recieve">
 						<p class="comment">{{$comment->content}}</p>
 					</div>
 					@endif
@@ -32,8 +44,15 @@
 
 				<form>
 					@csrf
-					<textarea class="chat_textarea" name="comment" style="width:80%"></textarea>
-					<button type="button" class="btn_chat" id="btn_send" onclick="send_btn_click();">送信</button>
+					<div class="chat-textarea row">
+						<div class="col-md-9">
+							<textarea class="chat_textarea" name="comment" style="width:80%"></textarea>
+						</div>
+						<div class="col-md-3">
+							<a class="bg-gray-blue color-light-blue btn-lg" href="#" id="btn_send"
+								onclick="send_btn_click();">送信</a>
+						</div>
+					</div>
 				</form>
 
 				<input type="hidden" name="send" value="{{$param['send']}}">
