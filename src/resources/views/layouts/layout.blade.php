@@ -13,9 +13,11 @@
 	@if(app('env') == 'production')
 	<link href="{{ secure_asset('css/styles.css') }}" rel="stylesheet">
 	<link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ secure_asset('favicon.ico') }}" rel="shortcut icon">
 	@else
 	<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('favicon.ico') }}" rel="shortcut icon">
 	@endif
 
 	<!-- Styles -->
