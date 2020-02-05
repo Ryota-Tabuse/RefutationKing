@@ -8,8 +8,7 @@
 		</div>
 		<div class="">
 			@foreach ($themes as $thema)
-			<a type="button" class="bg-blue btn-thema"
-				href="{{ route('rooms.index', ['thema' => $thema]) }}">{{$thema->name}}</a>
+			<a class="bg-blue btn-thema" href="{{ route('rooms.index', ['thema' => $thema]) }}">{{$thema->name}}</a>
 			</br>
 			@endforeach
 		</div>
