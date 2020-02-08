@@ -34,8 +34,8 @@ class CreateThema extends FormRequest
     {
         return[
             'name' => '議論テーマ名',
-            'option_a' => '選択肢A',
-            'option_b' => '選択肢B',
+            'option_a' => '選択肢',
+            'option_b' => '選択肢',
         ];
     }
 }
