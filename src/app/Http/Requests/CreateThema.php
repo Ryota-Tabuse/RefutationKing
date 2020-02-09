@@ -24,7 +24,7 @@ class CreateThema extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:20',
+            'name' => 'required|max:40',
             'option_a' => 'required|max:10',
             'option_b' => 'required|max:10',
         ];
