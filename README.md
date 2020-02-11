@@ -1,4 +1,5 @@
 # RefutationKing(論破王)
+https://refutation-king.herokuapp.com/
 オリジナルアプリケーションについて
 
 ## 目的
