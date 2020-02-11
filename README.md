@@ -69,6 +69,8 @@
 ## Git clone
 まずは、このリポジトリをクローンします。
 `git clone https://github.com/Ryota-Tabuse/RefutationKing`
+カレントディレクトリを変更する
+`cd RefutationKing`
 
 ## Submodule更新
 submoduleであるlaradockフォルダが空になっています。
@@ -76,3 +78,39 @@ submoduleであるlaradockフォルダが空になっています。
 2. `git submodule update`
 上記コマンドで、laradockの資材を落としてくることができます。
 
+## envファイル修正
+`cd laradock`
+`cp env-example .env`
+`cp env-example .env`
+・ APP_CODE_PATH_HOST=../
+-> APP_CODE_PATH_HOST=../src
+
+## docker構築
+`docker-compose up -d workspace nginx`
+`docker-compose up -d postgres`
+
+・docker-compose.ymlの修正
+```
+- DB_CONNECTION=mysql
+- DB_HOST=127.0.0.1
+- DB_PORT=3306
+- DB_DATABASE=homestead
+- DB_USERNAME=homestead
+- DB_PASSWORD=secret
++ DB_CONNECTION=pgsql
++ DB_HOST=postgres
++ DB_PORT=5432
++ DB_DATABASE=default
++ DB_USERNAME=default
++ DB_PASSWORD=secret
+```
+
+## migrate
+`docker-compose exec workspace bash`
+`composer install`
+`php artisan key:generate`
+
+## 動作確認
+以上の設定で、localhostで動作を確認することが可能。
+`http://localhost/`
+※チャットルームをリアルタイムチャット化する場合は、別途PUSHERの設定が必要。
