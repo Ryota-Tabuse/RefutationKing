@@ -5,8 +5,17 @@
 	<div class="content">
 		<div class="m-b-md">
 			<h1>議論テーマ</h1>
+			@if ($errors->any())
+			<div class="alert alert-danger tx-align-l">
+				<ul>
+					@foreach ($errors->all() as $error)
+					<li>{{$error}}</li>
+					@endforeach
+				</ul>
+			</div>
+			@endif
 			<h3>「{{$current_thema->name}}」</h3>
-			<p>※下記よりルームを選択するか、ルームを作成してください。</p>
+			<p>※青いボタンから議論を開始するか、ルームを作成してください。</p>
 		</div>
 		<hr>
 		@foreach ($rooms as $room)
@@ -14,7 +23,8 @@
 			@csrf
 			<div>
 				<p>{{$room->name}}</p>
-				{{-- 自分が参加=>赤 自分が不参加=>青 --}}
+				{{-- 自分が参加=>緑 自分が不参加=>青 --}}
+				{{-- TODO リファクタリング --}}
 				<button type="submit"
 					class="btn btn-primary btn-lg btn-m {{$room->option_a_user_id === Auth::id() ? 'btn-success' : 'btn-primary'}} "
 					name="option" value="option_a"
