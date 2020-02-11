@@ -10,17 +10,17 @@
 				<div class="row">
 					@if ($room->option_a_user_id == Auth::id())
 					<div class="col col-md-6">
-						<h2>{{$thema->option_b}}</h2>
+						<h2>⇦ {{$thema->option_b}}</h2>
 					</div>
 					<div class="col col-md-6">
-						<h2>{{$thema->option_a}}</h2>
+						<h2>{{$thema->option_a}} ⇨</h2>
 					</div>
 					@else
 					<div class="col col-md-6">
-						<h2>{{$thema->option_a}}</h2>
+						<h2>⇦ {{$thema->option_a}}</h2>
 					</div>
 					<div class="col col-md-6">
-						<h2>{{$thema->option_b}}</h2>
+						<h2>{{$thema->option_b}} ⇨</h2>
 					</div>
 					@endif
 				</div>
