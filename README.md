@@ -1,4 +1,4 @@
-# RefutationKing
+# RefutationKing(論破王)
 オリジナルアプリケーションについて
 
 ## 目的
