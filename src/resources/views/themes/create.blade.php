@@ -21,13 +21,13 @@
 						<form action="{{ route('themes.create')}}" method="post">
 							@csrf
 							<div class="form-group tx-align-l">
-								<label for="title" value="{{ old('name') }}"> 議論テーマ名 </label>
+								<label for="title"> 議論テーマ名 </label>
 								<input type="text" class="form-control" name="name" id="name"
 									value="{{ old('name') }}" />
-								<label for="title" value="{{ old('option_a') }}"> 選択肢 A</label>
+								<label for="title"> 選択肢</label>
 								<input type="text" class="form-control" name="option_a" id="option_a"
 									value="{{ old('option_a') }}" />
-								<label for="title"> 選択肢 B</label>
+								<label for="title"> 選択肢</label>
 								<input type="text" class="form-control" name="option_b" id="option_b"
 									value="{{ old('option_b') }}" />
 							</div>
